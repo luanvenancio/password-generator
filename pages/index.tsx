@@ -84,9 +84,11 @@ const Home: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>Password Generator</h1>
+                <h1 className="text-5xl font-semibold text-center">
+                    Password Generator
+                </h1>
 
-                <div>
+                <div className="container mx-auto">
                     <button
                         type="button"
                         id="copy-button"
@@ -110,32 +112,47 @@ const Home: NextPage = () => {
                     <p className={styles.description}>{password}</p>
                 </div>
 
-                <label htmlFor="pwd-length">{pwdLength}</label>
-                <input
-                    type="range"
-                    id="pwd-length"
-                    name="pwd-length"
-                    min="4"
-                    max="64"
-                    value={pwdLength}
-                    onChange={handleLengthOnChange}
-                />
+                <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <label
+                        htmlFor="pwd-length"
+                        className="block mb-2 text-sm text-center font-medium text-gray-900 dark:text-white"
+                    >
+                        {pwdLength}
+                    </label>
+                    <input
+                        type="range"
+                        id="pwd-length"
+                        name="pwd-length"
+                        min="4"
+                        max="64"
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                        value={pwdLength}
+                        onChange={handleLengthOnChange}
+                    />
 
-                <div className={styles.grid}>
                     {options.map(({ name }, index) => {
                         return (
-                            <div className={styles.card} key={index}>
+                            <div
+                                className="flex items-center pl-4 m-2 border border-gray-200 rounded hover:bg-gray-50 dark:border-gray-700"
+                                key={index}
+                            >
                                 <input
                                     type="checkbox"
                                     id={`checkbox-${index}`}
                                     name={name}
                                     value={name}
                                     checked={checkedState[index]}
+                                    className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     onChange={() =>
                                         handleCheckBoxOnChange(index)
                                     }
                                 />
-                                <label htmlFor={name}>{name}</label>
+                                <label
+                                    htmlFor={name}
+                                    className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                >
+                                    {name}
+                                </label>
                             </div>
                         );
                     })}
