@@ -88,7 +88,8 @@ const Home: NextPage = () => {
                     Password Generator
                 </h1>
 
-                <div className="container mx-auto">
+                <div className="flex">
+                    <p className={styles.description}>{password}</p>
                     <button
                         type="button"
                         id="copy-button"
@@ -108,24 +109,30 @@ const Home: NextPage = () => {
                     >
                         Refresh
                     </button>
-
-                    <p className={styles.description}>{password}</p>
                 </div>
 
                 <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-                    <label
-                        htmlFor="pwd-length"
-                        className="block mb-2 text-sm text-center font-medium text-gray-900 dark:text-white"
-                    >
-                        {pwdLength}
-                    </label>
+                    <div className="flex justify-between">
+                        <label
+                            htmlFor="pwd-length"
+                            className="block mb-2 text-sm text-center font-medium text-gray-900 dark:text-white"
+                        >
+                            Length
+                        </label>
+                        <label
+                            htmlFor="pwd-length"
+                            className="block mb-2 text-sm text-right font-bold text-gray-900 dark:text-white"
+                        >
+                            {pwdLength}
+                        </label>
+                    </div>
                     <input
                         type="range"
                         id="pwd-length"
                         name="pwd-length"
                         min="4"
                         max="64"
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                        className="w-full h-2 bg-gray-200 rounded-lg mb-4 appearance-none cursor-pointer dark:bg-gray-700"
                         value={pwdLength}
                         onChange={handleLengthOnChange}
                     />
