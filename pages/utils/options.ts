@@ -1,10 +1,10 @@
 export const options = [
     {
-        name: "UpperCase",
+        name: "Uppercase",
         value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     },
     {
-        name: "LowerCase",
+        name: "Lowercase",
         value: "abcdefghijklmnopqrstuvwxyz",
     },
     {
