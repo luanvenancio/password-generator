@@ -56,11 +56,11 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                             }
                             className={clsx(
                                 "group",
-                                "data-[disabled]:bg-purple-400",
-                                "data-[state=checked]:bg-purple-600",
-                                "data-[state=unchecked]:bg-gray-200 dark:bg-gray-800",
+                                "data-[disabled]:bg-violet-400",
+                                "data-[state=checked]:bg-violet-600",
+                                "data-[state=unchecked]:bg-zinc-700 dark:bg-gray-800",
                                 "relative inline-flex h-[24px] w-[44px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out",
-                                "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                                "focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75"
                             )}
                         >
                             <Switch.Thumb

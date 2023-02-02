@@ -44,13 +44,13 @@ export function PasswordSlider({ getPasswordLength }: PasswordLengthProp) {
                 step={1}
                 aria-label="Password Length"
             >
-                <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                    <Slider.Range className="absolute h-full rounded-full bg-purple-600 dark:bg-white" />
+                <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-zinc-700 dark:bg-slate-800">
+                    <Slider.Range className="absolute h-full rounded-full bg-violet-600 dark:bg-white" />
                 </Slider.Track>
                 <Slider.Thumb
                     className={clsx(
-                        "block h-5 w-5 rounded-full bg-purple-600 border-purple-400 dark:bg-white hover:cursor-pointer",
-                        "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                        "block h-5 w-5 rounded-full bg-violet-600 border-violet-400 dark:bg-white hover:cursor-pointer",
+                        "focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75"
                     )}
                 />
             </Slider.Root>

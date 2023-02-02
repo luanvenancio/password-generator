@@ -6,16 +6,16 @@ import { BiRefresh, BiCopy } from "react-icons/bi";
 import { generatePassword } from "./utils/generate-password";
 import { PasswordOptions } from "./components/PasswordOptions";
 import { PasswordSlider } from "./components/PasswordSlider";
+import { ProgressBar } from "./components/ProgressBar";
 
 const Home: NextPage = () => {
-    const [password, setPassword] = useState<string>();
+    const [password, setPassword] = useState<string>("");
 
     const [pwdOptions, setPwdOptions] = useState([true, true, false, false]);
 
     const [pwdLength, setPwdLength] = useState(12);
 
     const handleLengthOnChange = (pwdLength: number) => {
-        console.log(pwdLength);
         setPwdLength(pwdLength);
     };
 
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                     <p className="block mb-4 text-sm text-left font-semibold text-white dark:text-white">
                         New Password
                     </p>
-                    <div className="grid grid-cols-4 gap-1 w-full mb-2 p-1 bg-background border border-zinc-800 rounded-lg shadow-md sm:py-1 sm:px-4 md:py-2 md:px-4">
+                    <div className="grid grid-cols-4 gap-1 w-full mb-4 p-1 bg-background border border-zinc-800 rounded-lg shadow-md sm:py-1 sm:px-4 md:py-2 md:px-4">
                         <p className="col-span-3 break-all text-lg self-center font-medium text-left text-white">
                             {password}
                         </p>
@@ -85,6 +85,7 @@ const Home: NextPage = () => {
                             </button>
                         </div>
                     </div>
+                    <ProgressBar password={password} />
                 </div>
                 <PasswordSlider getPasswordLength={handleLengthOnChange} />
                 <PasswordOptions onOptionsChanged={handleOptionsOnChange} />
