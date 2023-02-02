@@ -54,9 +54,14 @@ const Home: NextPage = () => {
                         Instantly generate a secure, random password to keep
                         your account safe online.
                     </p>
-                    <p className="block mb-4 text-sm text-left font-semibold text-white dark:text-white">
-                        New Password
-                    </p>
+                    <div className="grid grid-cols-2 mb-4 content-center">
+                        <p className="cols-span-1 self-center block text-sm text-left font-semibold text-white dark:text-white">
+                            New Password
+                        </p>
+                        <div className="cols-span-1">
+                            <ProgressBar password={password} />
+                        </div>
+                    </div>
                     <div className="grid grid-cols-4 gap-1 w-full mb-4 p-1 bg-background border border-zinc-800 rounded-lg shadow-md sm:py-1 sm:px-4 md:py-2 md:px-4">
                         <p className="col-span-3 break-all text-lg self-center font-medium text-left text-white">
                             {password}
@@ -85,7 +90,6 @@ const Home: NextPage = () => {
                             </button>
                         </div>
                     </div>
-                    <ProgressBar password={password} />
                 </div>
                 <PasswordSlider getPasswordLength={handleLengthOnChange} />
                 <PasswordOptions onOptionsChanged={handleOptionsOnChange} />

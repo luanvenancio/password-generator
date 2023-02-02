@@ -29,9 +29,9 @@ export function ProgressBar({ password }: ProgressBarProps) {
     }, [password]);
 
     return (
-        <>
+        <div className="grid w-full justify-items-end items-end">
             <span
-                className={clsx("font-bold text-left text-white text-sm", {
+                className={clsx("font-bold text-right text-white text-sm", {
                     "text-red-500": percentage[pwdStrength.id] == 25,
                     "text-yellow-500": percentage[pwdStrength.id] == 50,
                     "text-green-300": percentage[pwdStrength.id] == 75,
@@ -40,17 +40,25 @@ export function ProgressBar({ password }: ProgressBarProps) {
             >
                 {pwdStrength.value}
             </span>
-            <div className="h-2 rounded-xl bg-zinc-700 w-full mt-4">
+            <div className="h-2 rounded-xl bg-zinc-700 w-1/2 mt-1">
                 <div
                     role="progressbar"
                     aria-label="Password Strength"
                     aria-valuenow={pwdStrength.id}
-                    className="h-2 rounded-xl bg-violet-600 transition-all"
+                    className={clsx(
+                        "h-2 rounded-xl bg-violet-600 transition-all",
+                        {
+                            "bg-red-500": percentage[pwdStrength.id] == 25,
+                            "bg-yellow-500": percentage[pwdStrength.id] == 50,
+                            "bg-green-300": percentage[pwdStrength.id] == 75,
+                            "bg-green-600": percentage[pwdStrength.id] == 100,
+                        }
+                    )}
                     style={{
                         width: `${percentage[pwdStrength.id]}%`,
                     }}
                 />
             </div>
-        </>
+        </div>
     );
 }
