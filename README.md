@@ -33,8 +33,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This software uses the following open source packages:
 
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/)
-- [Radix](https://www.radix-ui.com/)
+- [React](https://reactjs.org)
+- [Typescript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Next.js](https://nextjs.org)
+- [Radix](https://www.radix-ui.com)
 - [React Icons](https://react-icons.github.io/react-icons)
 - [Clsx](https://github.com/lukeed/clsx)
