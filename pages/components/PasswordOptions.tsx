@@ -41,19 +41,20 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                 <div className="flex justify-between">
                     <label
                         htmlFor="pwd-length"
-                        className="block mb-2 text-sm text-center font-semibold text-white dark:text-white"
+                        className="block mb-4 text-sm text-center font-semibold text-white dark:text-white"
                     >
                         Length
                     </label>
                     <label
                         htmlFor="pwd-length"
-                        className="block mb-2 text-sm text-right font-medium text-white dark:text-white"
+                        className="block mb-4 text-sm text-right font-medium text-white dark:text-white"
                     >
                         {pwdLength}
                     </label>
                 </div>
+
                 <Slider.Root
-                    className="SliderRoot"
+                    className="relative flex w-full touch-none select-none items-center"
                     name="pwd-length"
                     value={[pwdLength]}
                     onValueChange={handleLengthOnChange}
@@ -61,10 +62,15 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                     step={1}
                     aria-label="Password Length"
                 >
-                    <Slider.Track className="SliderTrack">
-                        <Slider.Range className="SliderRange" />
+                    <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+                        <Slider.Range className="absolute h-full rounded-full bg-purple-600 dark:bg-white" />
                     </Slider.Track>
-                    <Slider.Thumb className="SliderThumb" />
+                    <Slider.Thumb
+                        className={clsx(
+                            "block h-5 w-5 rounded-full bg-purple-600 border-purple-400 dark:bg-white hover:cursor-pointer",
+                            "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                        )}
+                    />
                 </Slider.Root>
             </div>
             <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-lg">
