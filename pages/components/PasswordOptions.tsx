@@ -81,7 +81,7 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                 {options.map(({ name }: any, index: number) => {
                     return (
                         <div
-                            className="flex items-center px-4 sm:pl-4 md:pl-6 mb-2 hover:bg-zinc-700"
+                            className="flex items-center px-4 sm:pl-4 md:pl-6 mb-2 hover:bg-zinc-800"
                             key={index}
                         >
                             <label
@@ -95,11 +95,18 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                                 name={name}
                                 value={name}
                                 checked={pwdOptions[index]}
+                                disabled={
+                                    pwdOptions.filter(Boolean).length === 1 &&
+                                    pwdOptions[index] === true
+                                        ? true
+                                        : false
+                                }
                                 onCheckedChange={() =>
                                     handleCheckBoxOnChange(index)
                                 }
                                 className={clsx(
                                     "group",
+                                    "data-[disabled]:bg-purple-500",
                                     "data-[state=checked]:bg-purple-600",
                                     "data-[state=unchecked]:bg-gray-200 dark:bg-gray-800",
                                     "relative inline-flex h-[24px] w-[44px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out",

@@ -23,9 +23,9 @@ export function generatePassword(checkedState: boolean[], pwdLength: number) {
         pool += special;
     }
 
-    /*if (!pool) {
+    if (!pool) {
         throw new TypeError("At least one rule for pools must be true");
-    }*/
+    }
 
     for (let i = 0; i < pwdLength; i++) {
         password += pool.charAt(Math.random() * pool.length);
