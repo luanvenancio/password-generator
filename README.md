@@ -1,8 +1,6 @@
 # Password Generator
 
-Password Generator made with Reactjs
-
-![Screenshot 2023-02-02 123221](https://user-images.githubusercontent.com/9398249/216368746-029919a5-44c5-448b-8554-8379f33284ff.jpg)
+![Screenshot 2023-02-02 130515](https://user-images.githubusercontent.com/9398249/216377278-6214c797-c690-4852-b6cd-f4b8ce0184ec.jpg)
 
 ## Getting Started
 
