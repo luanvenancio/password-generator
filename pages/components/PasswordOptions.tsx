@@ -1,6 +1,9 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { generatePassword } from "../utils/generate-password";
 import { options } from "../utils/options";
+import * as Switch from "@radix-ui/react-switch";
+import * as Slider from "@radix-ui/react-slider";
+import { clsx } from "clsx";
 
 type OptionsProp = Array<{
     name: String;
@@ -24,8 +27,8 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
         setPwdOptions(updatedOptions);
     };
 
-    const handleLengthOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPwdLength(e.target.value as unknown as number);
+    const handleLengthOnChange = (value: number[]) => {
+        setPwdLength(value[0]);
     };
 
     useEffect(() => {
@@ -34,7 +37,7 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
 
     return (
         <>
-            <div className="w-full max-w-md mb-2 bg-zinc-900 border border-zinc-800 rounded-lg shadow-md p-4 sm:p-4 md:p-6 dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full max-w-md mb-4 bg-zinc-900 border border-zinc-800 rounded-lg shadow-md p-4 sm:p-4 md:p-6 dark:bg-gray-800 dark:border-gray-700">
                 <div className="flex justify-between">
                     <label
                         htmlFor="pwd-length"
@@ -49,42 +52,62 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                         {pwdLength}
                     </label>
                 </div>
-                <input
-                    type="range"
-                    id="pwd-length"
+                <Slider.Root
+                    className="SliderRoot"
                     name="pwd-length"
-                    min="4"
-                    max="64"
-                    className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer dark:bg-gray-700"
-                    value={pwdLength}
-                    onChange={handleLengthOnChange}
-                />
+                    value={[pwdLength]}
+                    onValueChange={handleLengthOnChange}
+                    max={64}
+                    step={1}
+                    aria-label="Password Length"
+                >
+                    <Slider.Track className="SliderTrack">
+                        <Slider.Range className="SliderRange" />
+                    </Slider.Track>
+                    <Slider.Thumb className="SliderThumb" />
+                </Slider.Root>
             </div>
-            <div className="w-full max-w-md">
-                <p className="block mb-2 ml-4 mt-2 text-sm text-left font-semibold text-slate-200 dark:text-white">
+            <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-lg">
+                <p className="block py-6 ml-6 text-sm text-left font-semibold text-slate-200 dark:text-white">
                     Includes
                 </p>
+                <hr className="h-px mb-2 bg-zinc-800 border-0"></hr>
                 {options.map(({ name }: any, index: number) => {
                     return (
                         <div
-                            className="flex items-center pl-4 sm:pl-4 md:pl-6 mt-2 bg-zinc-900 border border-zinc-800 rounded hover:bg-zinc-700"
+                            className="flex items-center px-4 sm:pl-4 md:pl-6 mb-2 hover:bg-zinc-700"
                             key={index}
                         >
-                            <input
-                                type="checkbox"
-                                id={`checkbox-${index}`}
-                                name={name}
-                                value={name}
-                                checked={pwdOptions[index]}
-                                className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                onChange={() => handleCheckBoxOnChange(index)}
-                            />
                             <label
                                 htmlFor={name}
                                 className="w-full py-4 ml-2 text-sm font-medium text-white dark:text-gray-300"
                             >
                                 {name}
                             </label>
+                            <Switch.Root
+                                id={name}
+                                name={name}
+                                value={name}
+                                checked={pwdOptions[index]}
+                                onCheckedChange={() =>
+                                    handleCheckBoxOnChange(index)
+                                }
+                                className={clsx(
+                                    "group",
+                                    "data-[state=checked]:bg-purple-600",
+                                    "data-[state=unchecked]:bg-gray-200 dark:bg-gray-800",
+                                    "relative inline-flex h-[24px] w-[44px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out",
+                                    "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                                )}
+                            >
+                                <Switch.Thumb
+                                    className={clsx(
+                                        "data-[state=checked]:translate-x-5",
+                                        "data-[state=unchecked]:translate-x-0",
+                                        "pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
+                                    )}
+                                />
+                            </Switch.Root>
                         </div>
                     );
                 })}
