@@ -5,19 +5,37 @@ import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import { BiRefresh, BiCopy } from "react-icons/bi";
 import { generatePassword } from "./utils/generate-password";
 import { PasswordOptions } from "./components/PasswordOptions";
+import { PasswordSlider } from "./components/PasswordSlider";
 
 const Home: NextPage = () => {
     const [password, setPassword] = useState<string>();
 
-    const refreshClickHandler = (e: MouseEvent<HTMLButtonElement>): void => {
-        e.preventDefault();
-        //setPassword(newPassword);
+    const [pwdOptions, setPwdOptions] = useState([true, true, false, false]);
+
+    const [pwdLength, setPwdLength] = useState(12);
+
+    const handleLengthOnChange = (pwdLength: number) => {
+        console.log(pwdLength);
+        setPwdLength(pwdLength);
     };
 
-    function handleNewPassword(pwdOptions: boolean[], pwdLength: number) {
+    const handleOptionsOnChange = (pwdOptions: boolean[]) => {
+        setPwdOptions(pwdOptions);
+    };
+
+    const handleNewPassword = (pwdOptions: boolean[], pwdLength: number) => {
         const newPassword = generatePassword(pwdOptions, pwdLength);
         setPassword(newPassword);
-    }
+    };
+
+    const refreshClickHandler = (e: MouseEvent<HTMLButtonElement>): void => {
+        e.preventDefault();
+        handleNewPassword(pwdOptions, pwdLength);
+    };
+
+    useEffect(() => {
+        handleNewPassword(pwdOptions, pwdLength);
+    }, [pwdOptions, pwdLength]);
 
     return (
         <div className="bg-background py-0 px-8">
@@ -39,8 +57,8 @@ const Home: NextPage = () => {
                     <p className="block mb-4 text-sm text-left font-semibold text-white dark:text-white">
                         New Password
                     </p>
-                    <div className="grid grid-cols-3 gap-2 w-full mb-2 p-1 bg-background border border-zinc-800 rounded-lg shadow-md sm:py-1 sm:px-4 md:py-2 md:px-4">
-                        <p className="col-span-2 break-all text-lg self-center font-medium text-left text-white">
+                    <div className="grid grid-cols-4 gap-1 w-full mb-2 p-1 bg-background border border-zinc-800 rounded-lg shadow-md sm:py-1 sm:px-4 md:py-2 md:px-4">
+                        <p className="col-span-3 break-all text-lg self-center font-medium text-left text-white">
                             {password}
                         </p>
                         <div className="flex justify-end">
@@ -68,7 +86,8 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                 </div>
-                <PasswordOptions onOptionsChanged={handleNewPassword} />
+                <PasswordSlider getPasswordLength={handleLengthOnChange} />
+                <PasswordOptions onOptionsChanged={handleOptionsOnChange} />
             </main>
         </div>
     );
