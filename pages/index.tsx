@@ -28,11 +28,14 @@ const Home: NextPage = () => {
             </Head>
 
             <main className="py-16 px-0 flex flex-col items-center justify-center min-h-screen">
-                <h1 className="mb-4 text-3xl font-semibold text-left text-white">
-                    Generate Password
-                </h1>
-
                 <div className="w-full max-w-md mb-4 bg-zinc-900 border border-zinc-800 rounded-lg shadow-md p-4 sm:p-4 md:p-6">
+                    <h1 className="mb-4 text-xl font-semibold text-left text-white">
+                        Generate Password
+                    </h1>
+                    <p className="block mb-10 text-sm text-left font-semibold text-gray-400">
+                        Instantly generate a secure, random password to keep
+                        your account safe online.
+                    </p>
                     <p className="block mb-4 text-sm text-left font-semibold text-white dark:text-white">
                         New Password
                     </p>

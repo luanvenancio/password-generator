@@ -7,8 +7,6 @@ export function generatePassword(checkedState: boolean[], pwdLength: number) {
     let password = "";
     let pool = "";
 
-    console.log("c [" + checkedState + "] p " + pool);
-
     if (checkedState[0]) {
         pool += upperCase;
     }
@@ -25,7 +23,6 @@ export function generatePassword(checkedState: boolean[], pwdLength: number) {
         pool += special;
     }
 
-    console.log("c " + checkedState + "p " + pool);
     /*if (!pool) {
         throw new TypeError("At least one rule for pools must be true");
     }*/

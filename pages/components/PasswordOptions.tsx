@@ -73,7 +73,7 @@ export function PasswordOptions({ onOptionsChanged }: PasswordOptionsProp) {
                     />
                 </Slider.Root>
             </div>
-            <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-lg">
+            <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-lg pb-4">
                 <p className="block py-6 ml-6 text-sm text-left font-semibold text-slate-200 dark:text-white">
                     Includes
                 </p>
