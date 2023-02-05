@@ -1,6 +1,6 @@
 # Password Generator
 
-![Screenshot 2023-02-02 164956](https://user-images.githubusercontent.com/9398249/216434993-159495e3-6e2f-4e07-9203-6e2018208447.jpg)
+![Screenshot 2023-02-05 004030](https://user-images.githubusercontent.com/9398249/216800293-66625fb1-25d6-4342-9b3a-1e2c1f75b96a.jpg)
 
 ## Getting Started
 
